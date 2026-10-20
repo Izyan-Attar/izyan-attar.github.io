@@ -1012,6 +1012,7 @@ body:before{
 .lux-header{position:relative;margin:0 auto;max-width:1440px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.008));box-shadow:var(--shadow);overflow:hidden}
 .lux-topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 28px;border-bottom:1px solid var(--line);font-family:Arial,sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:.18em}
 .lux-eyebrow{color:var(--gold2)}
+.lux-brand{display:flex;align-items:center;gap:14px;text-decoration:none;flex:0 0 auto}.lux-logo{height:84px;width:auto;display:block;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))}
 .lux-topline{color:#7e766b}
 .lux-topbar .whatsapp-header-btn{margin:0;text-decoration:none;padding:10px 15px !important;border:1px solid rgba(215,186,122,.38) !important;background:rgba(177,138,74,.08) !important;color:var(--gold3) !important;border-radius:999px !important;font-weight:600;letter-spacing:.12em}
 .lux-hero{position:relative;min-height:650px;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;padding:70px clamp(28px,7vw,96px);gap:40px}
@@ -1090,7 +1091,7 @@ footer{max-width:1180px;margin:0 auto !important;border-top:1px solid var(--line
   #product-grid, #new-arrivals-grid{grid-template-columns:repeat(3,minmax(0,1fr)) !important}
 }
 @media (max-width: 720px){
-  .lux-topline{display:none}.lux-topbar{padding:10px 14px}.lux-topbar .whatsapp-header-btn{padding:8px 11px !important}
+  .lux-topline{display:none}.lux-topbar{padding:10px 14px}.lux-logo{height:62px}.lux-brand .lux-eyebrow{display:none}.lux-topbar .whatsapp-header-btn{padding:8px 11px !important}
   .lux-hero{padding:48px 18px 26px}.hero-copy h1{font-size:54px}.hero-lead{font-size:14px}.hero-meta{gap:10px}.hero-art{min-height:360px}.art-bottle{right:29%;top:14%;transform:scale(.82)}.ring-1{right:0}.ring-2{right:12%}.ring-3{right:-8%}.hero-size-strip{padding:14px;align-items:flex-start}.hero-note{display:none}.hero-size-strip .size-guide{gap:10px;flex-wrap:wrap;justify-content:flex-end}
   .lux-offer-grid{grid-template-columns:1fr}.lux-offer{border-right:0;border-bottom:1px solid var(--line)}.lux-offer:last-child{border-bottom:0}
   .lux-collection-head{align-items:flex-start}.collection-seal{display:none}
@@ -1140,7 +1141,7 @@ footer{max-width:1180px;margin:0 auto !important;border-top:1px solid var(--line
 
 <header class="lux-header">
   <div class="lux-topbar">
-    <div class="lux-eyebrow">THE IZYAN FRAGRANCE HOUSE</div>
+    <a class="lux-brand" href="./" aria-label="IZYAN Attar &amp; Perfumes — home"><img class="lux-logo" src="images/izyan-logo.webp" alt="IZYAN Attar &amp; Perfumes" width="155" height="200"><span class="lux-eyebrow">THE IZYAN FRAGRANCE HOUSE</span></a>
     <div class="lux-topline">Curated attars &amp; perfumes · Crafted for your signature</div>
     <a class="whatsapp-header-btn" id="header-whatsapp" href="#" target="_blank" rel="noopener">Order on WhatsApp</a>
   </div>
