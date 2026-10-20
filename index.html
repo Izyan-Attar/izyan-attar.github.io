@@ -928,31 +928,6 @@
 .pd-mini span{display:block;font:14px Georgia,serif;padding:0 6px}.pd-mini small{display:block;font:11px Arial,sans-serif;color:#a99a80;margin-top:3px}
 @media(max-width:700px){.pd{padding:0;align-items:flex-end}.pd-card{max-height:92vh;border-radius:22px 22px 0 0}.pd-main{grid-template-columns:1fr}.pd-img{min-height:0;aspect-ratio:4/3}.pd-info{padding:20px 18px 18px}.pd-name{font-size:28px}.pd-more{padding:2px 18px 22px}.pd-more-row{gap:8px}.pd-mini img{height:auto;aspect-ratio:1}.pd-mini span{font-size:12.5px}}
 @media (prefers-reduced-motion:reduce){.pd.open{animation:none}}
-/* ---------- Sky-drop bottle animation (plays once, ~20s after load) ---------- */
-.skydrop{position:fixed;inset:0;z-index:440;pointer-events:none;overflow:hidden;opacity:0;transition:opacity .6s ease}
-.skydrop.on{opacity:1;pointer-events:auto;cursor:pointer}
-.skydrop-veil{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 60%,rgba(0,0,0,.15),rgba(0,0,0,.62) 75%)}
-.skydrop-beam{position:absolute;left:50%;top:min(14vh,140px);width:min(70vw,420px);height:85%;transform:translateX(-50%);background:linear-gradient(180deg,rgba(255,226,150,.55),rgba(255,214,120,.18) 55%,rgba(255,214,120,0));filter:blur(18px);clip-path:polygon(38% 0,62% 0,100% 100%,0 100%);opacity:0;animation:sdBeam 7s ease forwards}
-.skydrop-sky{position:absolute;left:-10%;right:-10%;top:-2vh;height:min(26vh,260px);opacity:0;animation:sdCloud 7s ease forwards;pointer-events:none}
-.skydrop-sky i{position:absolute;inset:0;display:block;background:url(images/fx/clouds.webp) 50% 100%/cover no-repeat}
-.skydrop-sky .k1{opacity:.75;transform:scaleX(-1) translateY(-14%);animation:sdDrift 7s ease-in-out reverse forwards}
-.skydrop-sky .k2{animation:sdDrift 7s ease-in-out forwards}
-.skydrop-bottle{position:absolute;left:50%;top:50%;height:min(44vh,360px);width:auto;transform:translate(-50%,-160vh) rotate(-8deg);filter:drop-shadow(0 18px 30px rgba(0,0,0,.55)) drop-shadow(0 0 22px rgba(255,205,110,.35));animation:sdFall 7s cubic-bezier(.22,.9,.3,1) forwards}
-.skydrop-glow{position:absolute;left:50%;top:calc(50% + min(22vh,180px));width:min(60vw,320px);height:46px;transform:translate(-50%,-50%) scale(.2);border-radius:50%;background:radial-gradient(ellipse,rgba(255,214,120,.75),rgba(255,214,120,0) 70%);opacity:0;animation:sdGlow 7s ease forwards}
-.skydrop-spark{position:absolute;left:50%;top:50%;width:6px;height:6px;border-radius:50%;background:#ffe3a3;box-shadow:0 0 10px 3px rgba(255,210,120,.8);opacity:0;animation:sdSpark 1.5s ease-out 2.55s forwards}
-.skydrop-cap{position:absolute;left:50%;top:calc(50% + min(22vh,180px) + 34px);transform:translate(-50%,10px);width:min(88vw,460px);text-align:center;opacity:0;animation:sdCap 7s ease forwards}
-.skydrop-cap b{display:block;font:600 clamp(15px,4.2vw,20px)/1.3 'Cinzel','Cormorant Garamond',Georgia,serif;letter-spacing:.18em;color:#e9c766;text-shadow:0 2px 12px rgba(0,0,0,.8)}
-.skydrop-cap span{display:block;margin-top:8px;font:italic clamp(14px,3.8vw,17px)/1.4 Georgia,'Cormorant Garamond',serif;color:#f3e7cc;text-shadow:0 2px 10px rgba(0,0,0,.85)}
-@keyframes sdCap{0%,38%{opacity:0;transform:translate(-50%,10px)}46%{opacity:1;transform:translate(-50%,0)}86%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,-6px)}}
-.skydrop-x{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:50%;border:1px solid rgba(215,186,122,.45);background:rgba(10,8,6,.55);color:#e9d2a0;font:16px Arial;cursor:pointer}
-@keyframes sdBeam{0%{opacity:0}12%{opacity:.9}70%{opacity:.75}100%{opacity:0}}
-@keyframes sdCloud{0%{opacity:0;transform:translateY(-30px)}12%{opacity:1;transform:translateY(0)}80%{opacity:1}100%{opacity:0;transform:translateY(-20px)}}
-@keyframes sdDrift{0%{transform:translateX(-1.5vw)}100%{transform:translateX(1.5vw)}}
-@keyframes sdFall{0%{transform:translate(-50%,-160vh) rotate(-8deg)}36%{transform:translate(-50%,-50%) rotate(2deg)}42%{transform:translate(-50%,-53%) rotate(-1deg)}48%{transform:translate(-50%,-50%) rotate(0)}66%{transform:translate(-50%,-53%) rotate(0)}82%{transform:translate(-50%,-50%) rotate(0);opacity:1}100%{transform:translate(-50%,-62%) scale(.92);opacity:0}}
-@keyframes sdGlow{0%,34%{opacity:0;transform:translate(-50%,-50%) scale(.2)}40%{opacity:1;transform:translate(-50%,-50%) scale(1.15)}60%{opacity:.7;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-50%) scale(1.3)}}
-@keyframes sdSpark{0%{opacity:0;transform:translate(-50%,-50%)}15%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.3)}}
-@media (prefers-reduced-motion:reduce){.skydrop-bottle{animation:sdFade 7s ease forwards;transform:translate(-50%,-50%)}.skydrop-beam,.skydrop-sky,.skydrop-spark{display:none}.skydrop-glow{animation:none}}
-@keyframes sdFade{0%{opacity:0}15%{opacity:1}80%{opacity:1}100%{opacity:0}}
 
   /* ---------- My Orders (saved only in this browser) ---------- */
   .mo-link{background:transparent;border:1px solid var(--border);color:var(--gold-light);border-radius:20px;padding:6px 12px;font:600 12px 'Helvetica Neue',Arial,sans-serif;cursor:pointer;white-space:nowrap}
@@ -2708,43 +2683,6 @@ window.IZYAN_IG_COMMENTS = [
   function count(){let n=0;const g=document.querySelector('#filter-bar .filter-btn.active');if(g&&g.dataset.filter!=='all')n++;n+=document.querySelectorAll('#family-bar .fam-btn.active,#price-bar .fam-btn.active').length;badge.textContent=n;badge.hidden=!n}
   document.addEventListener('click',function(e){if(e.target.closest('.filter-btn,.fam-btn,#finder-clear'))setTimeout(count,0)});
   count();
-})();
-</script>
-<script>
-(function(){
-  // One-time brand animation: the IZYAN 12ml bottle descends from the sky ~20s after the page loads.
-  const DELAY = /[?&]dropnow\b/.test(location.search) ? 800 : 20000, KEY = 'izyan_skydrop_seen', IMG = 'images/fx/bottle-12ml.webp';
-  try { if (sessionStorage.getItem(KEY) === '1' && DELAY > 1000) return; } catch (e) {}
-  let started = false, timer = null;
-  function busy() {
-    const ov = document.getElementById('cart-overlay');
-    if (ov && ov.classList.contains('open')) return true;
-    if (document.querySelector('.pd.open, .igm.open')) return true;
-    const a = document.activeElement;
-    return !!(a && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName));
-  }
-  function play() {
-    if (started) return;
-    if (document.hidden || busy()) { timer = setTimeout(play, 4000); return; }
-    started = true;
-    try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
-    const wrap = document.createElement('div');
-    wrap.className = 'skydrop'; wrap.setAttribute('aria-hidden', 'true');
-    let sparks = '';
-    for (let k = 0; k < 14; k++) { const ang = (k / 14) * Math.PI * 2, r = 90 + Math.random() * 90; sparks += '<span class="skydrop-spark" style="--dx:' + Math.round(Math.cos(ang) * r) + 'px;--dy:' + Math.round(Math.sin(ang) * r * 0.6 + 120) + 'px;animation-delay:' + (2.05 + Math.random() * 0.25).toFixed(2) + 's"></span>'; }
-    wrap.innerHTML = '<div class="skydrop-veil"></div><div class="skydrop-beam"></div><div class="skydrop-sky"><i class="k1"></i><i class="k2"></i></div><div class="skydrop-glow"></div>' + sparks + '<img class="skydrop-bottle" alt="" src="' + IMG + '"><div class="skydrop-cap"><b>THIS IS OUR 12ML ATTAR BOTTLE</b><span>Every IZYAN 12ml attar comes in this bottle.</span></div><button type="button" class="skydrop-x" aria-label="Close">✕</button>';
-    document.body.appendChild(wrap);
-    const end = function () { wrap.classList.remove('on'); setTimeout(function () { wrap.remove(); }, 650); };
-    wrap.addEventListener('click', end);
-    requestAnimationFrame(function () { wrap.classList.add('on'); });
-    setTimeout(end, 7000);
-  }
-  function arm() {
-    // preload the bottle shortly before it is needed
-    setTimeout(function () { const i = new Image(); i.src = IMG; }, Math.max(0, DELAY - 3000));
-    timer = setTimeout(play, DELAY);
-  }
-  if (document.readyState === 'complete') arm(); else window.addEventListener('load', arm);
 })();
 </script>
 <button type="button" class="mo-fab" id="mo-fab" hidden>📦 My Orders</button>
