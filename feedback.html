@@ -7,8 +7,8 @@
 <meta name="description" content="Share your feedback and experience with IZYAN Attar and Perfumes.">
 <style>
   :root {
-    --bg: #0D0B08;
-    --card-bg: #17140F;
+    --bg: #1a060a;
+    --card-bg: #300b11;
     --gold: #C9A227;
     --gold-light: #E9C766;
     --ivory: #F7F3EC;
@@ -105,7 +105,7 @@
   textarea,
   select {
     width: 100%;
-    background: #201B16;
+    background: #441019;
     border: 1px solid var(--border);
     color: var(--ivory);
     padding: 10px 12px;
@@ -125,7 +125,7 @@
   }
   .star-rating input { display: none; }
   .star-rating label {
-    color: #3a3225;
+    color: #771c2b;
     cursor: pointer;
     font-size: 30px;
     margin: 0;
@@ -140,7 +140,7 @@
   button[type="submit"] {
     margin-top: 6px;
     background: linear-gradient(135deg, var(--gold), #9c7c1c);
-    color: #0D0B08;
+    color: #1a060a;
     border: none;
     font-family: 'Helvetica Neue', Arial, sans-serif;
     font-weight: bold;
@@ -181,6 +181,13 @@
     border-top: 1px solid var(--border);
   }
 </style>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icons/favicon-64.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="IZYAN">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
 <body>
 
@@ -270,5 +277,6 @@
   });
 </script>
 
+<script>if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})});</script>
 </body>
 </html>
