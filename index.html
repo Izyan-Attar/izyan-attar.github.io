@@ -1207,7 +1207,7 @@ footer{max-width:1180px;margin:0 auto !important;border-top:1px solid var(--line
   </div>
 </header>
 
-<section class="lux-offers"><div class="lux-offer-grid"><div class="lux-offer"><span class="offer-icon">✦</span><div><b>Complimentary Delivery</b><small>On qualifying orders</small></div></div><div class="lux-offer"><span class="offer-icon">◎</span><div><b>Curated Fragrance House</b><small>Every profile has a purpose</small></div></div><div class="lux-offer"><span class="offer-icon">◌</span><div><b>Order on WhatsApp</b><small>Simple, personal &amp; direct</small></div></div></div><div id="free-delivery-badge-container"></div></section>
+<section class="lux-offers"><div class="lux-offer-grid"><div class="lux-offer"><span class="offer-icon">✦</span><div><b>Complimentary Delivery</b><small>On orders of Rs. 999+</small></div></div><div class="lux-offer"><span class="offer-icon">◎</span><div><b>Curated Fragrance House</b><small>Every profile has a purpose</small></div></div><div class="lux-offer"><span class="offer-icon">◌</span><div><b>Order on WhatsApp</b><small>Simple, personal &amp; direct</small></div></div></div><div id="free-delivery-badge-container"></div></section>
 <div id="offer-banner-container" class="offer-banner-lux"></div>
 
 <section id="new-arrivals" class="lux-collection-head" style="margin-top:20px"><div><div class="section-kicker">JUST IN</div><h2>New Arrivals.</h2><p>The freshest additions to the Izyan wardrobe — added straight from our latest drop.</p></div></section>
@@ -1815,7 +1815,7 @@ window.addEventListener('beforeinstallprompt',function(e){e.preventDefault()});
             <div class="pd-sizes"></div>
             <div class="pd-price"></div>
             <button type="button" class="pd-add">Add to Cart</button>
-            <div class="pd-trust">🚚 Pan India Free Delivery &nbsp;·&nbsp; 💬 Help on WhatsApp</div>
+            <div class="pd-trust">🚚 Free Delivery on orders of Rs. 999+ &nbsp;·&nbsp; 💬 Help on WhatsApp</div>
           </div>
         </div>
         <div class="pd-more" hidden><div class="pd-label">YOU MAY ALSO LIKE</div><div class="pd-more-row"></div></div>
@@ -1996,14 +1996,29 @@ window.addEventListener('beforeinstallprompt',function(e){e.preventDefault()});
     return CART.reduce(function (sum, item) { return sum + item.price * item.qty; }, 0);
   }
 
-  // Final payable total after any applied discount — used by both WhatsApp message and UPI QR
-  function cartFinalTotal() {
+  // Delivery: FREE when the cart subtotal (before any discount) is Rs. 999 or more, otherwise Rs. 50.
+  // Keep these two numbers the same as in the Inventory app.
+  const FREE_DELIVERY_MIN = 999;
+  const DELIVERY_CHARGE = 50;
+
+  // Products total after any applied discount (before delivery)
+  function cartGoodsTotal() {
     const subtotal = cartSubtotal();
     if (appliedDiscount > 0) {
       const discAmt = Math.round(subtotal * appliedDiscount / 100);
       return subtotal - discAmt;
     }
     return subtotal;
+  }
+
+  function cartDeliveryCharge() {
+    const sub = cartSubtotal();
+    return (CART.length && sub > 0 && sub < FREE_DELIVERY_MIN) ? DELIVERY_CHARGE : 0;
+  }
+
+  // Final payable total = products after discount + delivery — used by WhatsApp message, UPI QR and saved orders
+  function cartFinalTotal() {
+    return cartGoodsTotal() + cartDeliveryCharge();
   }
 
   // ---------- October 2026 free-gift offer (applied automatically in the cart) ----------
@@ -2168,8 +2183,13 @@ window.addEventListener('beforeinstallprompt',function(e){e.preventDefault()});
     if (appliedDiscount > 0) {
       const discAmt = Math.round(cartSubtotal() * appliedDiscount / 100);
       html += `<div class="cart-subtotal-row" style="font-size:13px; color:var(--gold-light);"><span>Discount (${appliedDiscount}%)</span><span>&minus; Rs. ${discAmt}</span></div>`;
-      html += `<div class="cart-subtotal-row"><span>Total</span><span>Rs. ${cartSubtotal() - discAmt}</span></div>`;
     }
+    const delivery = cartDeliveryCharge();
+    html += `<div class="cart-subtotal-row" style="font-size:13px;"><span>Delivery</span><span>${delivery ? 'Rs. ' + delivery : 'FREE'}</span></div>`;
+    if (delivery) {
+      html += `<div class="cart-gift-hint">🚚 Add items worth <b>Rs. ${FREE_DELIVERY_MIN - cartSubtotal()}</b> more to get <b>FREE delivery</b></div>`;
+    }
+    html += `<div class="cart-subtotal-row"><span>Total</span><span>Rs. ${cartFinalTotal()}</span></div>`;
     container.innerHTML = html;
 
     container.querySelectorAll('[data-action="inc"]').forEach(function (btn) {
@@ -2264,13 +2284,13 @@ window.addEventListener('beforeinstallprompt',function(e){e.preventDefault()});
     }
     lines.push('');
     lines.push(`Subtotal: Rs. ${cartSubtotal()}`);
-    let finalTotal = cartSubtotal();
     if (appliedDiscount > 0) {
       const discAmt = Math.round(cartSubtotal() * appliedDiscount / 100);
-      finalTotal = cartSubtotal() - discAmt;
       lines.push(`Discount (${OFFER_CODE}, ${appliedDiscount}%): - Rs. ${discAmt}`);
     }
-    lines.push(`Total: Rs. ${finalTotal}`);
+    const delivery = cartDeliveryCharge();
+    lines.push(`Delivery: ${delivery ? 'Rs. ' + delivery : 'FREE'}`);
+    lines.push(`Total: Rs. ${cartFinalTotal()}`);
     lines.push('');
     lines.push(`Name: ${name}`);
     lines.push(`Address: ${address}`);
@@ -2316,7 +2336,8 @@ window.addEventListener('beforeinstallprompt',function(e){e.preventDefault()});
       items: CART.map(function (i) { return { name: i.name, size: i.size, qty: i.qty, price: i.price }; }),
       gifts: cartFreeGifts(),
       discountCode: appliedDiscount > 0 ? OFFER_CODE : '',
-      discount: subtotal - cartFinalTotal()
+      discount: subtotal - cartGoodsTotal(),
+      delivery: cartDeliveryCharge()
     };
     try {
       // keepalive lets the request finish even while the browser switches to WhatsApp
@@ -2360,10 +2381,10 @@ window.addEventListener('beforeinstallprompt',function(e){e.preventDefault()});
   updateCartBadge();
 
   // ============================================================
-  // FEATURE: Pan India Free Delivery badge
+  // FEATURE: Free Delivery badge (Rs. 999+; below that Rs. 50)
   // ============================================================
   document.getElementById('free-delivery-badge-container').innerHTML = `
-    <div class="free-delivery-badge">🚚 Pan India Free Delivery</div>
+    <div class="free-delivery-badge">🚚 Pan India Free Delivery on orders of Rs. ${FREE_DELIVERY_MIN}+ · Below that Rs. ${DELIVERY_CHARGE}</div>
   `;
 
   // ============================================================
@@ -2732,8 +2753,8 @@ window.IZYAN_IG_COMMENTS = [
     if (CART_FIELD_IDS.some(function (id) { return cartFieldError(id); }) || !CART.length) return;
     const me = {}; Object.keys(FIELDS).forEach(function (k) { me[k] = document.getElementById(FIELDS[k]).value.trim(); }); write(ME_KEY, me);
     const id = currentOrderId(), list = read(ORDERS_KEY, []).filter(function (o) { return o.id !== id; });
-    const sub = cartSubtotal(), total = cartFinalTotal();
-    list.unshift({ id: id, at: new Date().toISOString(), items: CART.map(function (i) { return { name: i.name, size: i.size, qty: i.qty, price: i.price }; }), gifts: (cartFreeGifts() || []).map(function (g) { return { label: g.label, qty: g.qty }; }), subtotal: sub, discountCode: appliedDiscount > 0 ? OFFER_CODE : '', discount: sub - total, total: total });
+    const sub = cartSubtotal(), total = cartFinalTotal(), delivery = cartDeliveryCharge();
+    list.unshift({ id: id, at: new Date().toISOString(), items: CART.map(function (i) { return { name: i.name, size: i.size, qty: i.qty, price: i.price }; }), gifts: (cartFreeGifts() || []).map(function (g) { return { label: g.label, qty: g.qty }; }), subtotal: sub, discountCode: appliedDiscount > 0 ? OFFER_CODE : '', discount: sub - cartGoodsTotal(), delivery: delivery, total: total });
     write(ORDERS_KEY, list.slice(0, MAX_ORDERS));
     refreshButtons();
   });
@@ -2769,6 +2790,7 @@ window.IZYAN_IG_COMMENTS = [
         (o.gifts || []).map(function (g) { return '<li class="gift"><span>🎁 ' + esc(g.label) + ' ×' + esc(g.qty) + '</span><span>FREE</span></li>'; }).join('');
       return '<div class="mo-order"><div class="mo-top"><b>' + esc(o.id) + '</b><span>' + esc(when) + '</span></div><ul class="mo-items">' + items + '</ul>' +
         (o.discount > 0 ? '<div class="mo-top" style="margin-bottom:6px"><span>Discount' + (o.discountCode ? ' (' + esc(o.discountCode) + ')' : '') + '</span><span>− ' + rs(o.discount) + '</span></div>' : '') +
+        (o.delivery > 0 ? '<div class="mo-top" style="margin-bottom:6px"><span>Delivery</span><span>' + rs(o.delivery) + '</span></div>' : '') +
         '<div class="mo-tot"><span>Total</span><b>' + rs(o.total) + '</b></div>' +
         '<div class="mo-acts"><button type="button" class="mo-again" data-again="' + esc(o.id) + '">🔁 Order again</button><button type="button" class="mo-ask" data-ask="' + esc(o.id) + '">💬 Ask about this order</button></div></div>';
     }).join('') || '<div class="mo-empty">No orders saved on this phone yet.</div>';
