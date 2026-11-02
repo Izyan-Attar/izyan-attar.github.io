@@ -1,0 +1,58 @@
+name,image,type,bestseller,attar12,perfume50,notes,active,new arrival
+Arabian Oud,images/arabian-oud.jpg,men,TRUE,1000,1200,"Woody, Strong & Oudy type",TRUE,
+Aramani Gold,images/aramani-gold.jpg,men,TRUE,500,650,"Warm, Spicy & Amber type",TRUE,
+Aurum,images/aurum.jpg,unisex,TRUE,500,650,"Golden, Warm & Sweet type",TRUE,
+Azzaro Most Wanted,images/azzaro-most-wanted.jpg,men,TRUE,500,650,"Bold, Spicy & Woody type",TRUE,
+Belgium Musk,images/belgium-musk.jpg,men,FALSE,650,800,"Soft, Musky & Sensual type",TRUE,
+Black Oud,images/black-oud.jpg,men,FALSE,400,550,"Deep, Smoky & Oudy type",FALSE,
+Brut,images/brut.jpg,men,TRUE,300,550,"Classic, Fresh & Masculine type",TRUE,
+Burberry Godess,images/burberry-godess.jpg,women,TRUE,500,650,"Floral, Elegant & Feminine type",TRUE,
+Burberry Weekend,images/burberry-weekend.jpg,men,FALSE,500,650,"Fresh, Citrusy & Light type",TRUE,
+CR7,images/cr7.jpg,men,TRUE,500,650,"Fresh, Sporty & Woody type",TRUE,
+David off Champion,images/david-off-champion.jpg,men,TRUE,500,650,"Fresh, Aquatic & Energetic type",TRUE,
+David off Cool Water,images/david-off-cool-water.jpg,men,TRUE,500,650,"Aquatic, Fresh & Cool type",TRUE,
+Dunhill Red,images/dunhill-red.jpg,unisex,TRUE,500,650,"Spicy, Woody & Bold type",TRUE,
+Gucci Florel,images/gucci-florel.jpg,unisex,TRUE,500,650,"Floral, Fresh & Feminine type",TRUE,
+Gucci Rush,images/gucci-rush.jpg,men,FALSE,500,650,"Fruity, Spicy & Sensual type",TRUE,
+Khamraha WAHA,images/khamraha-waha.jpg,men,TRUE,500,650,"Sweet, Oudy & Exotic type",TRUE,
+Musk Berry Fume,images/musk-berry-fume.jpg,unisex,TRUE,500,650,"Fruity, Musky & Sweet type",TRUE,
+Musk Rajali,images/musk-rajali.jpg,unisex,TRUE,500,650,"Musky, Warm & Sensual type",TRUE,
+Musk Safi,images/musk-safi.jpg,unisex,FALSE,500,650,"Soft, Clean & Musky type",TRUE,
+Opan D.,images/opan-d.jpg,men,TRUE,500,650,"Spicy, Oriental & Warm type",TRUE,
+Peach Musk,images/peach-musk.jpg,women,TRUE,1000,1200,"Fruity, Sweet & Musky type",TRUE,
+Prince,images/prince.jpg,men,TRUE,1000,1200,"Royal, Woody & Spicy type",TRUE,
+Purple Oud,images/purple-oud.jpg,unisex,TRUE,500,650,"Deep, Sweet & Oudy type",TRUE,
+Red Ocean,images/red-ocean.jpg,unisex,FALSE,500,650,"Fresh, Aquatic & Cool type",TRUE,
+Red Vanilla,images/red-vanilla.jpg,unisex,TRUE,500,650,"Sweet, Warm & Vanilla type",TRUE,
+Royal Prophecy,images/royal-prophecy.jpg,men,TRUE,500,650,"Rich, Regal & Woody type",TRUE,
+Shezada,images/shezada.jpg,men,TRUE,1000,1200,"Royal, Oudy & Musky type",TRUE,
+Sweet Oud,images/sweet-oud.jpg,men,FALSE,600,750,"Sweet, Woody & Oudy type",TRUE,
+Zaffran,images/zaffran.jpg,men,FALSE,1000,1200,"Spicy, Saffron & Exotic type",TRUE,
+Malik Al Dhahab,images/malik-al-dhahab.jpg,unisex,TRUE,500,650,"Royal, Golden & Oudy type",TRUE,
+Valentino,images/valentino.jpg,unisex,TRUE,500,650,"Elegant, Floral & Romantic type",TRUE,
+9pm Afnan,images/9pm-afnan.jpg,unisex,TRUE,500,650,"Sweet, Spicy & Seductive type",TRUE,
+Aquatic White,images/aquatic-white.jpg,unisex,TRUE,350,550,"Fresh, Aquatic & Clean type",TRUE,
+Hawas,images/Hawas.jpg,unisex,TRUE,500,650,"Fruity,Citrus & Aquatic",TRUE,
+TAM DAO,images/TAM_DAO.jpg,unisex,TRUE,500,650,"Elegant, Floral & Romantic type",TRUE,
+Dove,images/Dove.jpg,women,TRUE,500,650,"Elegant, Floral & Romantic type",TRUE,
+Dunhill Icon,images/Dunhill_icon.jpg,unisex,TRUE,500,650,"Fruity,Citrus & Aquatic",TRUE,
+Turk Khalifa,images/Turk_Khalifa.jpg,unisex,TRUE,650,800,"Fresh, Aquatic & Clean type",TRUE,
+Bleu D Channel,images/Bleu_D_Channel.jpg,men,TRUE,500,650,"Fresh, Aquatic & Clean type",TRUE,
+Chandan,images/Chandan.jpg,unisex,FALSE,500,650,Fresh & Clean type,TRUE,
+Savage Dior,images/Savage_Dior.jpg,unisex,TRUE,500,650,"Fresh, Aquatic & Clean type",TRUE,
+Khamraha OG,images/Khamraha_OG.jpg,men,TRUE,500,650,"Sweet, Woody & Oudy type",TRUE,
+Hawas intense,images/Hawas_intense.jpg,men,TRUE,500,650,"Soft,clean & fresh",TRUE,
+Summer Oud,images/summer-oud.jpg,unisex,TRUE,700,850,"Light,fresh & Oudy type",TRUE,Yes
+Bin Shaikh,images/bin-shaikh.jpg,men,TRUE,700,850,"Rich,Spicy & Oudy type",TRUE,Yes
+Creed Aventus,images/creed-aventus.jpg,men,TRUE,500,650,"Fruity,Smoky & Woody type",TRUE,Yes
+Imperial Valley,images/imperial-valley.jpg,men,TRUE,500,650,"Fresh,Aquatic & Clean type",TRUE,Yes
+Ombre Nomad,images/ombre-nomad.jpg,unisex,TRUE,600,750,"Smoky,Rosy & Oudy type",TRUE,Yes
+Desert Oud,images/desert-oud.jpg,men,TRUE,600,750,"Dry,woody & Amber type",TRUE,Yes
+Sports Club,images/sports-club.jpg,men,TRUE,500,650,"Fresh, Sporty & Energetic type",TRUE,Yes
+Izyan Oud,images/izyan-oud.jpg,unisex,TRUE,800,950,"Fresh, Woody & Oudy type",TRUE,Yes
+Turkey Oud,images/turkey-oud.jpg,men,TRUE,1100,1250,"Intense,Smoky & Oudy type",TRUE,Yes
+Izyan French SP,images/izyan-french-sp.jpg,unisex,TRUE,600,750,"Fresh, Fruity & Woody type",TRUE,Yes
+Mogra,images/mogra.jpg,unisex,FALSE,500,650,"Floral, Fresh & Jasmine",TRUE,
+Musky Leather,images/musky-leather.jpg,men,TRUE,900,1050,"Musky, Smoky & Leathery type",TRUE,Yes
+Izyan fresh,images/izyan-fresh.jpg,unisex,TRUE,500,650,"Fresh, Clean & Citrus type",TRUE,Yes
+Frerrari,images/ferrari.jpg,men,TRUE,500,650,"Fresh, Spicy & Woody type",TRUE,Yes

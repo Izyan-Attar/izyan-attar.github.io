@@ -1417,12 +1417,10 @@ window.addEventListener('beforeinstallprompt',function(e){e.preventDefault()});
   // ============================================================
   // GOOGLE SHEETS PRODUCT CATALOG
   // ============================================================
-  const GOOGLE_SHEET_CSV_URL =
-    'https://docs.google.com/spreadsheets/d/e/2PACX-1vQMdOSPXvgALgLlTU107QpaxVYwZIEX1RJvSNxhztqZ50NEK1dU8FHDPiapt5mkAA/pub?gid=1396737628&single=true&output=csv';
-  // Backup endpoint: Google's gviz/tq CSV export tends to be more consistently
-  // CORS-friendly for client-side fetch() than the /pub link above.
-  const GOOGLE_SHEET_CSV_URL_ALT =
-    'https://docs.google.com/spreadsheets/d/1ArnfA0GLL3bGfG9i-6fKBCtUbGzt8a5H/gviz/tq?tqx=out:csv&gid=1396737628';
+  // Product list lives in this repo: products.csv (columns: name, image, type, bestseller, attar12, perfume50, notes, active, new arrival).
+  // Edit that file to add / change / hide products (active = FALSE hides a product). If it can't load, the built-in list below is used.
+  const GOOGLE_SHEET_CSV_URL = 'products.csv';
+  const GOOGLE_SHEET_CSV_URL_ALT = 'products.csv';
 
   let PRODUCTS = FALLBACK_PRODUCTS.slice();
 
@@ -1953,8 +1951,8 @@ window.addEventListener('beforeinstallprompt',function(e){e.preventDefault()});
   } catch (e) { CART = []; }
 
   // ---------- Offer (Google Sheet driven — edit the sheet to change/turn off the offer) ----------
-  const OFFERS_SHEET_CSV_URL =
-    'https://docs.google.com/spreadsheets/d/e/2PACX-1vQMdOSPXvgALgLlTU107QpaxVYwZIEX1RJvSNxhztqZ50NEK1dU8FHDPiapt5mkAA/pub?gid=1355987088&single=true&output=csv';
+  // Offer banner lives in this repo: offers.csv (Active = TRUE shows it; Offer Text, Discount Code, Discount Percent).
+  const OFFERS_SHEET_CSV_URL = 'offers.csv';
   let OFFER_ACTIVE = false;
   let OFFER_TEXT = '';
   let OFFER_CODE = '';
