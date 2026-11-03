@@ -426,7 +426,10 @@
     object-fit: cover;
     display: block;
     background: #140507;
+    opacity: 0;
+    transition: opacity .35s ease;
   }
+  .card-img.ld { opacity: 1; }
 
   .card-top,
   .card-notes,
@@ -1423,6 +1426,11 @@ window.addEventListener('beforeinstallprompt',function(e){e.preventDefault()});
   const GOOGLE_SHEET_CSV_URL_ALT = 'products.csv';
 
   let PRODUCTS = FALLBACK_PRODUCTS.slice();
+  // Product cards load a light WebP copy (images/web/<name>.webp, ~50 KB) instead of the full photo; the full photo is the fallback and is used in the product popup.
+  function cardThumb(src) {
+    const m = /^images\/([^/]+)\.(jpe?g|png)$/i.exec(String(src || ''));
+    return m ? 'images/web/' + m[1] + '.webp' : src;
+  }
 
   function csvToRows(csv) {
     const rows = [];
@@ -1584,7 +1592,7 @@ window.addEventListener('beforeinstallprompt',function(e){e.preventDefault()});
     if (p.bestseller) badges.push(`<span class="bestseller-badge">★ Best Seller</span>`);
 
     card.innerHTML = `
-      <img class="card-img" src="${p.image}" alt="${p.name}" loading="lazy">
+      <img class="card-img" src="${cardThumb(p.image)}" data-full="${p.image}" alt="${p.name}" loading="lazy" decoding="async" width="560" height="700" onload="this.classList.add('ld')" onerror="if(this.dataset.full&&this.src.indexOf(this.dataset.full)<0){this.src=this.dataset.full}else{this.classList.add('ld')}">
       <div class="card-top">
         <h3>${p.name}</h3>
       </div>

@@ -2,7 +2,7 @@
 // • Pages (HTML): network first, so prices/products are always fresh; cached copy only when offline.
 // • Images/icons/fonts: stale-while-revalidate (fast, refreshed in the background).
 // • Videos, Google Sheets, Apps Script, WhatsApp and every other site: never cached, always straight to the network.
-const CACHE = 'izyan-site-v1';
+const CACHE = 'izyan-site-v2';
 const CORE = ['./', 'index.html', 'feedback.html', 'manifest.webmanifest', 'images/izyan-logo.webp', 'icons/icon-192.png'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
